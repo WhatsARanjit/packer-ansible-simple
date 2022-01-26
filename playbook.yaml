@@ -1,0 +1,17 @@
+---
+# playbook.yml
+
+# playbook.yml
+- name: 'Provision Image'
+  hosts: default
+  become: true
+
+  tasks:
+    - name: Update apt
+      apt:
+       update_cache: yes
+
+    - name: Install nginx
+      package:
+        name: nginx
+        state: present
