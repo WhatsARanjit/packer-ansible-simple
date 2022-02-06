@@ -1,4 +1,5 @@
 language: bash
+dist: bionic
 script:
   - sudo ./build/scripts/install.sh
   - ./build/scripts/packer.sh
