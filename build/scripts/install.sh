@@ -17,6 +17,7 @@ install packer /usr/local/bin
 
 ## Ansible
 add-apt-repository -y ppa:ansible/ansible > /dev/null
+apt-get -y -qq update > /dev/null
 apt-get install -y -qq ansible=$ANSIBLE_VERSION > /dev/null
 
 ## Terraform
