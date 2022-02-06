@@ -38,13 +38,36 @@ source "amazon-ebs" "ubuntu-image" {
   ssh_username = "ubuntu"
 }
 
-# Ansible
-build {
-  sources = [
-    "source.amazon-ebs.ubuntu-image"
-  ]
+# HCP Packer information
+variable "version" {
+  type    = string
+  default = "none"
+}
 
+build {
+  # Ansible
   provisioner "ansible" {
     playbook_file = "./playbook.yaml"
   }
+
+  # HCP Packer
+  hcp_packer_registry {
+    bucket_name   = "aws-nginx"
+    bucket_labels = {
+      role = "nginx"
+    }
+    build_labels  = {
+      version = var.version
+    }
+  }
+
+  # Manifest
+  post-processor "manifest" {
+    output     = "aws-manifest.json"
+    strip_path = true
+  }
+
+  sources = [
+    "source.amazon-ebs.ubuntu-image"
+  ]
 }

@@ -2,9 +2,7 @@
 *.tfstate
 *.tfstate.backup
 *.tfstate.lock.info
-
-# logs
-*.log
+*.lock.hcl
 
 # Directories
 .terraform/
@@ -13,19 +11,11 @@
 # SSH Keys
 *.pem
 
-# Backup files
+# Misc files
+*.tfvars
+.*.swp
 *.bak
+*.log
 
-# Ignored Terraform files
-*gitignore*.tf
-.terraform.lock.hcl
-backend.tf
-
-# Ignore Mac .DS_Store files
-.DS_Store
-
-# Ignored vscode files
-.vscode/
-
-# Misc
-*.swp
+# Packer manifests
+packer_builds/*manifest.json
