@@ -1,4 +1,4 @@
 language: bash
 script:
-  - ./build/scripts/install.sh
+  - sudo ./build/scripts/install.sh
   - ./build/scripts/packer.sh
